@@ -1,0 +1,27 @@
+<h1>Course List</h1> <br>
+
+<%= link_to 'Add New Category', new_admin_category_path, class: "btn btn-info" %>&nbsp;&nbsp;
+ <%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
+ <br><br>  
+<% if @category.count == 0 %>
+<%= "No record presents" %>
+<% else %>
+<table border=0 cellspaceing="5" cellpadding="5">
+	<tr>
+		<td>Name</td>
+		<td></td>
+		<td></td>
+	</tr>
+	<% @category.each do |category| %>
+		<tr>
+			<td><%= link_to category.name , [:admin, category] %></td>
+			<td><%= link_to "Edit", edit_admin_category_path(category) %></td>
+			<td><%= link_to "delete", [:admin, category], method: :delete, data: { confirm: 'Are you sure?' } %>	
+			
+		</tr>
+	<% end %>
+</table>
+<% end %>	
+ <br><br>
+ 
+  
