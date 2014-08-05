@@ -6,9 +6,13 @@ class Users::InvitationsController < Devise::InvitationsController
   	super
   end
 
+  def edit
+    super
+  end
+
   def create
     super
-    invite_user!
+    flash[:notice] = "User invited" #need to check if create was successful
   end
 
   private
@@ -17,8 +21,7 @@ class Users::InvitationsController < Devise::InvitationsController
   # should return an instance of resource class
   def accept_resource
     resource = resource_class.accept_invitation!(update_resource_params)
-    ## Report accepting invitation to analytics
-    Analytics.report('invite.accept', resource.id)
+    resource.role = Role.find_by(name: "admin") #needs to change to "registered" once that section is ready
     resource
   end
 
@@ -26,15 +29,11 @@ class Users::InvitationsController < Devise::InvitationsController
   	  devise_parameter_sanitizer.for(:sign_up) do |u|
       u.permit(:email, :password, :password_confirmation)
    		 end
-	  # Only add some parameters
-	  devise_parameter_sanitizer.for(:accept_invitation).concat [:email, :username]
+
 	  # Override accepted parameters
 	  devise_parameter_sanitizer.for(:accept_invitation) do |u|
-	    u.permit(:email, :username)
+	    u.permit(:password, :password_confirmation, :invitation_token)
     end
   end
 
-  def invite_user!
-    @user = User.invite!(:email => params[:user][:email])
-  end
 end
