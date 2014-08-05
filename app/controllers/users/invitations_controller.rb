@@ -1,21 +1,17 @@
 class Users::InvitationsController < Devise::InvitationsController
 
-  before_filter :configure_permitted_parameters, if: :devise_controller?	
+  before_filter :configure_permitted_parameters, if: :devise_controller?
 
   def new
   	super
-  end 
+  end
+
+  def create
+    super
+    invite_user!
+  end
 
   private
-
-  # this is called when creating invitation
-  # should return an instance of resource class
-  def invite_resource
-    ## skip sending emails on invite
-    resource_class.invite!(invite_params, current_inviter) do |u|
-      u.skip_invitation = true
-    end
-  end
 
   # this is called when accepting invitation
   # should return an instance of resource class
@@ -35,6 +31,10 @@ class Users::InvitationsController < Devise::InvitationsController
 	  # Override accepted parameters
 	  devise_parameter_sanitizer.for(:accept_invitation) do |u|
 	    u.permit(:email, :username)
+    end
   end
-  end 
+
+  def invite_user!
+    @user = User.invite!(:email => params[:user][:email])
+  end
 end
