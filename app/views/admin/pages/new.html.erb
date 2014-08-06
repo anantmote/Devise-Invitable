@@ -1,0 +1,36 @@
+
+
+<h1>Add New Page</h1> 
+
+ <%= form_for([:admin, @page]) do |c| %>
+<table>
+   
+    	<%= render 'shared/error_messages' ,object: c.object %>
+
+    	<tr>
+		     <td> <%= c.label :categorie_id %></td>
+		     <td>
+		        <%= collection_select(:page, :categorie_id, Categorie.all, :id, :name, { :prompt => false }) %>
+		     </td>
+		</tr>
+
+		<tr>
+		     <td> <%= c.label :title %></td>
+		     <td> <%= c.text_field :title %>  </td>
+		</tr>
+		
+		<tr>
+		     <td> <%= c.label :content %></td>
+		     <td> <%= c.text_area :content, class: "tinymce" %></td>
+		</tr>
+
+	    <tr>
+	     	<td> <%= c.submit "Create new Page", class: "btn btn-large btn-primary" %></td>
+	     	<td><%= link_to 'Cancel', admin_pages_path, class: "btn btn-info" %></td>
+	    </tr>
+    
+</table>  
+
+<% end %>
+
+<%= tinymce %>

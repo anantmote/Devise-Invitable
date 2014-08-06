@@ -4,8 +4,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(user)
-    if current_user.role.name == "admin"
+    if user.role.name == "admin"
       admin_path
+    elsif user.role.name == "registered"
+      home_path
     end
   end
 
@@ -16,6 +18,8 @@ class ApplicationController < ActionController::Base
   def route_to_proper_controller
     if current_user.role.name == "admin"
       redirect_to admin_path
+    elsif current_user.role.name == "registered"
+      redirect_to home_path
     end
   end
 

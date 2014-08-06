@@ -21,7 +21,7 @@ class Users::InvitationsController < Devise::InvitationsController
   # should return an instance of resource class
   def accept_resource
     resource = resource_class.accept_invitation!(update_resource_params)
-    resource.role = Role.find_by(name: "admin") #needs to change to "registered" once that section is ready
+    resource.role = Role.find_by(name: "registered") #needs to change to "registered" once that section is ready
     resource
   end
 
