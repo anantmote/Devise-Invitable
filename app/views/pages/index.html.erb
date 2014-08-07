@@ -1,6 +1,24 @@
 <h1>CaptiveOne CRM</h1>
 <br>
-<br>
-<h1>This is a index page</h1>
+<%= link_to "Home", home_path %> <%= link_to "About", about_path %> <%= link_to "Contact", contact_path %> <%= link_to "Learn", pages_path %> 
 
+<br><br>
+<% if @page.count == 0 %>
+<%= "No record presents" %>
+<% else %>
+<table border=0 cellspaceing="5" cellpadding="5">
+	<tr>
+		<td>Title</td>
+		<td>Category</td>
+		<td>Last Updated</td>
+	</tr>
+	<% @page.each do |page| %>
+		<tr>
+			<td><%= link_to page.title, page  %></td>
+			<td><%= page.categorie.name %></td>
+			<td><%= page.updated_at.strftime("%d %b, %I:%M%p") %></td>
+		</tr>
+	<% end %>
+</table>
+<% end %>	
 

@@ -6,5 +6,5 @@ class Page < ActiveRecord::Base
 
 	belongs_to :categorie
 	     
-
+	default_scope -> { order('categorie_id') }
 end

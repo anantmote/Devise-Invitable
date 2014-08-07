@@ -12,10 +12,16 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
   # You can have the root of your site routed with "root"
-  root 'pages#index'
-  get 'home' => 'pages#home'
-  get 'about' => 'pages#about'
+  resources :dashboard
+  resources :pages
+  root 'dashboard#home'
+  get 'home' => 'dashboard#home'
+  get 'about' => 'dashboard#about'
+  get 'contact' => 'dashboard#contact'
 
+  #get 'learn' => 'pages#index'
+  #get 'pages' => 'pages#index'
+  
   #devise_for :users, controllers: { invitations: 'devise/invitations' }
 
   # The priority is based upon order of creation: first created -> highest priority.

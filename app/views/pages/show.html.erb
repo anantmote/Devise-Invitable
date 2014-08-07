@@ -1,0 +1,64 @@
+<script>
+var time,timeSite,starttime,endtime;
+
+  window.onload = function(){
+  time = new Date();
+  starttime = formattedDate(new Date());
+  
+ }
+
+function formattedDate(date) {
+    var d = new Date(date || Date.now()),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+        hours = d.getHours();
+        minutes = d.getMinutes();
+        seconds = d.getSeconds();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+    var timeStr = [hours, minutes, seconds].join(':');
+    var dateStr = [day, month, year].join('/');
+    return dateStr + " "+  timeStr;
+}
+
+
+
+   $(window).unload(function () {
+   	 endtime = formattedDate(new Date());
+     timeSite = new Date() - time;
+     var uid = <%= current_user.id %>;
+     var pgid= <%= @page.id %>;
+     $.ajax({
+     type: 'GET',
+     async: false,
+     data: $.param({ userlog: {starttime: starttime, endtime: endtime ,timespent: timeSite,user_id: uid,page_id: pgid }}),
+     url: '/pages/<%= @page.id %>',
+     success:function(data){ alert(data);}
+   });
+
+ });
+</script>
+
+<h1>Show Page</h1> <br><br>
+<%= link_to "Learn", pages_path %> 
+<table border=0 cellspaceing="5">
+	<tr>
+		<td>Title</td><td>:</td><td><%= @page.title %></td>
+	</tr>
+	<tr>	
+		<td>Category</td><td>:</td><td><%= @page.categorie.name %></td>
+	</tr>
+	<tr>	
+		<td valign='top'>Content</td><td valign='top'>:</td><td valign='top'><%= @page.content.html_safe %></td>
+	</tr>
+	<tr>	
+		<td>Last Updated</td><td>:</td><td><%= @page.updated_at %></td>
+	</tr>	
+	
+</table>	
+
+<br>
+<%= link_to 'Back', pages_path, class: "btn btn-info" %>
+<br>
