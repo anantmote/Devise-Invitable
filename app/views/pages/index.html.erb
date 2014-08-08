@@ -1,12 +1,16 @@
+
 <h1>CaptiveOne CRM</h1>
 <br>
-<%= link_to "Home", home_path %> <%= link_to "About", about_path %> <%= link_to "Contact", contact_path %> <%= link_to "Learn", pages_path %> 
+<%= link_to "Home", home_path %> <%= link_to "About", about_path %> <%= link_to "Contact", contact_path %> 
+<%= link_to "Learn", pages_path %> 
 
 <br><br>
+
 <% if @page.count == 0 %>
 <%= "No record presents" %>
 <% else %>
 <table border=0 cellspaceing="5" cellpadding="5">
+
 	<tr>
 		<td>Title</td>
 		<td>Category</td>

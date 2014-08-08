@@ -14,11 +14,14 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   resources :dashboard
   resources :pages
+  resources :userlogs
   root 'dashboard#home'
   get 'home' => 'dashboard#home'
   get 'about' => 'dashboard#about'
   get 'contact' => 'dashboard#contact'
 
+  post '/ajax/sum3' => 'pages#ajax_sum3'
+ 
   #get 'learn' => 'pages#index'
   #get 'pages' => 'pages#index'
   
