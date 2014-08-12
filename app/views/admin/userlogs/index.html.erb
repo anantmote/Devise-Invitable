@@ -1,0 +1,24 @@
+<h1>User Logs </h1>
+<%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
+<% if @userlogs.count == 0 %>
+<%= "No record presents" %>
+<% else %>
+<table border=0 cellspaceing="5" cellpadding="5">
+	<tr>
+		<td>User Name</td>
+		<td>Page Title</td>
+		<td>Time Spent</td>
+	</tr>
+	<% @userlogs.each do |userlog| %>
+		<tr>
+			<td><%= userlog.user.username %></td>
+			<td><%= userlog.page.title %></td>
+			<td><%= userlog.timespent  %>	
+			
+		</tr>
+	<% end %>
+</table>
+<% end %>
+
+<%= will_paginate @userlogs %>	
+ <br><br>

@@ -6,8 +6,16 @@ Rails.application.routes.draw do
     resources :dashboard
     resources :categories
     resources :pages
+    resources :userlogs do
+      collection do
+        get :mostactivepage
+        get :mostactiveuser
+        get :userpagecount
+      end
+    end
   end
 
+  #devise_for :users, controllers: { invitations: 'devise/invitations' }
   #devise_for :users, :path_names => { :sign_up => "register" }  
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
@@ -25,7 +33,7 @@ Rails.application.routes.draw do
   #get 'learn' => 'pages#index'
   #get 'pages' => 'pages#index'
   
-  #devise_for :users, controllers: { invitations: 'devise/invitations' }
+ 
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

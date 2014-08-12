@@ -1,0 +1,21 @@
+<h1>Most Active page</h1>
+
+<%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
+
+<table border=0 cellspaceing="5" cellpadding="5">
+	<tr>
+		<td>User Name</td>
+		<td>Page Name</td>
+		<td>Count</td>
+	</tr>
+	<% @userlogs.each do |userlog| %>
+		<tr>
+			<td><%= userlog.user.username %></td>
+			<td><%= userlog.page.title %></td>
+			<td><%= userlog.pgcount  %>	
+			
+		</tr>
+	<% end %>
+</table>
+
+ <br><br>

@@ -1,0 +1,22 @@
+#before_action :set_page, only: [:show, :store_pagetime]
+  =begin
+    def show
+    @pagetime = Page.userlog.build
+    end
+  =end 
+
+  =begin  
+    def store_pagetime
+    @pagetime = Page.userlog.build(pagetime_params)
+    @pagetime.user = current_user
+    @pagetime.save
+    end
+    
+    private
+    def set_page
+    @page = Page.find(params[:id])
+    end
+    def pagetime_params
+    params.require(:page).permit(pagetime_attributes: [:id, :starttime, :endtime] )
+    end
+  =end

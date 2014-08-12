@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808032532) do
+ActiveRecord::Schema.define(version: 20140812051154) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
@@ -34,8 +34,8 @@ ActiveRecord::Schema.define(version: 20140808032532) do
   end
 
   create_table "userlogs", force: true do |t|
-    t.string   "starttime"
-    t.string   "endtime"
+    t.datetime "starttime"
+    t.datetime "endtime"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "page_id"

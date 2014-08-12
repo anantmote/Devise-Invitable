@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   #:confirmable
 
-        
-  belongs_to :role       
-         
+
+  belongs_to :role
+  has_many :userlogs
+
 end

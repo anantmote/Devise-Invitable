@@ -41,3 +41,4 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'devise_invitable'
 gem 'tinymce-rails'	
+gem 'will_paginate'

@@ -89,8 +89,6 @@ Rails.application.configure do
     domain: "example.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    #user_name: ENV["sima.mote@netblade.co.in"], # you can use ordinary gmail username here
-    #password: ENV["swamigovinda15"]   # you can use your gmail password here, but don't push the changes
     user_name: "", # you can use ordinary gmail username here
     password: ""   # you can use your gmail password here, but don't push the changes
   }
