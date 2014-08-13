@@ -1,7 +1,9 @@
 <h1>CaptiveOne CRM</h1>
 <br>
 <%= link_to "Home", home_path %> <%= link_to "About", about_path %> <%= link_to "Contact", contact_path %> 
+ <% if user_signed_in? %>
 <%= link_to "Learn", pages_path %> 
+  <% end %>
 <h1>This is home page</h1>
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
