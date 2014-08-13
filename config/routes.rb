@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get 'contact' => 'dashboard#contact'
 
   post '/ajax/sum3' => 'pages#ajax_sum3'
- 
+   
   #get 'learn' => 'pages#index'
   #get 'pages' => 'pages#index'
   

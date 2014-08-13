@@ -2,7 +2,14 @@ class PagesController < ApplicationController
   before_filter :authenticate_user!
   
   def index
-  	@page = Page.all
+  	#@page = Page.all
+
+    if params[:search]
+      @page = Page.search(params[:search]).order("created_at DESC")
+    else
+      @page = Page.order("created_at DESC")
+    end
+
   end
 
   def show
@@ -27,6 +34,10 @@ class PagesController < ApplicationController
             end
           end
         end
+    end
+
+    def search
+      @page = Page.search params[:search]
     end
 
  

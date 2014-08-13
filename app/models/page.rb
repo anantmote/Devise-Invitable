@@ -8,4 +8,11 @@ class Page < ActiveRecord::Base
 	has_many :userlogs
 
 	default_scope -> { order('categorie_id') } #should be category_id
+
+
+	def self.search(query)
+	    # where(:title, query) -> This would return an exact match of the query
+	    where("title like ? OR content = ? ", "%#{query}%","%#{query}%") 
+	end
+
 end
