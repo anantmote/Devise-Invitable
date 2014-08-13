@@ -43,9 +43,9 @@ gem 'devise_invitable'
 gem 'tinymce-rails'	
 gem 'will_paginate'
 
-#group :development, :test do 
- # gem 'sqlite3'
-#end
+group :development, :test do 
+  gem 'sqlite3'
+end
 
 group :production do
   gem 'pg', '0.15.1'
