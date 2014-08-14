@@ -2,6 +2,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
   before_filter :configure_permitted_parameters, if: :devise_controller?	
 
+     
   private
 
   # this is called when creating invitation

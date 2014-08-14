@@ -38,8 +38,8 @@ Rails.application.configure do
     domain: "gmail.com",
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "", # you can use ordinary gmail username here
-    password: ""   # you can use your gmail password here, but don't push the changes
+    user_name: "dawange.sima@gmail.com", # you can use ordinary gmail username here
+    password: "eknathsindhu15"   # you can use your gmail password here, but don't push the changes
   }
 
 end

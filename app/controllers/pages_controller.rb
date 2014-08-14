@@ -1,13 +1,20 @@
 class PagesController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!,:is_referral_source?
   
+  def is_referral_source?
+    unless current_user.role.name == "registered"
+      flash[:notice] = "You are not authorized to view that."
+      self.route_to_proper_controller
+    end
+  end
+
   def index
   	#@page = Page.all
-
+     
     if params[:search]
-      @page = Page.search(params[:search]).order("created_at DESC")
+      @page = Page.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 5)
     else
-      @page = Page.order("created_at DESC")
+      @page = Page.order("created_at DESC").paginate(page: params[:page], per_page: 5)
     end
 
   end

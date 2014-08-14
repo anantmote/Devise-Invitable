@@ -1,10 +1,20 @@
 class Devise::InvitationsController < DeviseController
 
+  #before_filter :authenticate_user!,:is_admin?
+  before_filter :is_admin?, :only => [:new, :create]
   prepend_before_filter :authenticate_inviter!, :only => [:new, :create]
   prepend_before_filter :has_invitations_left?, :only => [:create]
   prepend_before_filter :require_no_authentication, :only => [:edit, :update, :destroy]
   prepend_before_filter :resource_from_invitation_token, :only => [:edit, :destroy]
   helper_method :after_sign_in_path_for
+
+  #if not admin then code will execute
+  def is_admin?
+    unless current_user.role.name == "admin"
+      flash[:notice] = "You are not authorized to view that."
+      self.route_to_proper_controller
+    end
+  end
 
   # GET /resource/invitation/new
   def new

@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get 'home' => 'dashboard#home'
   get 'about' => 'dashboard#about'
   get 'contact' => 'dashboard#contact'
-
+  
   post '/ajax/sum3' => 'pages#ajax_sum3'
    
   #get 'learn' => 'pages#index'
