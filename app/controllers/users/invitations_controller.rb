@@ -27,12 +27,12 @@ class Users::InvitationsController < Devise::InvitationsController
 
   def configure_permitted_parameters
   	  devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:email, :password, :password_confirmation)
+      u.permit(,:username,:email, :password, :password_confirmation)
    		 end
 
 	  # Override accepted parameters
 	  devise_parameter_sanitizer.for(:accept_invitation) do |u|
-	    u.permit(:password, :password_confirmation, :invitation_token)
+	    u.permit(:username,:password, :password_confirmation, :invitation_token)
     end
   end
 

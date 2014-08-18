@@ -2,6 +2,7 @@ class Devise::InvitationsController < DeviseController
 
   #before_filter :authenticate_user!,:is_admin?
   before_filter :is_admin?, :only => [:new, :create]
+  before_filter :configure_permitted_parameters, if: :devise_controller?
   prepend_before_filter :authenticate_inviter!, :only => [:new, :create]
   prepend_before_filter :has_invitations_left?, :only => [:create]
   prepend_before_filter :require_no_authentication, :only => [:edit, :update, :destroy]
@@ -69,8 +70,14 @@ class Devise::InvitationsController < DeviseController
     resource_class.invite!(invite_params, current_inviter, &block)
   end
   
+  #def accept_resource
+   # resource_class.accept_invitation!(update_resource_params)
+  #end
+
   def accept_resource
-    resource_class.accept_invitation!(update_resource_params)
+    resource = resource_class.accept_invitation!(update_resource_params)
+    resource.role = Role.find_by(name: "registered") #needs to change to "registered" once that section is ready
+    resource
   end
 
   def current_inviter
@@ -100,4 +107,18 @@ class Devise::InvitationsController < DeviseController
     devise_parameter_sanitizer.sanitize(:accept_invitation)
   end
   
+  private
+
+  def configure_permitted_parameters
+      devise_parameter_sanitizer.for(:sign_up) do |u|
+      #u.permit(:email, :password, :password_confirmation,:username)
+      u.permit(:username, :password, :password_confirmation)
+       end
+    # Override accepted parameters
+    devise_parameter_sanitizer.for(:accept_invitation) do |u|
+      u.permit(:username,:password, :password_confirmation, :invitation_token)
+    end
+  end
+
+
 end

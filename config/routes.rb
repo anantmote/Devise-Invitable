@@ -11,13 +11,14 @@ Rails.application.routes.draw do
         get :mostactivepage
         get :mostactiveuser
         get :userpagecount
+        get :userlist
       end
     end
   end
 
-  #devise_for :users, controllers: { invitations: 'devise/invitations' }
+  devise_for :users, controllers: { invitations: 'devise/invitations' },:skip => [:registrations] 
   #devise_for :users, :path_names => { :sign_up => "register" }  
-  devise_for :users, :controllers => { :invitations => 'users/invitations' }
+  #devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
   # You can have the root of your site routed with "root"
   resources :dashboard
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   get 'home' => 'dashboard#home'
   get 'about' => 'dashboard#about'
   get 'contact' => 'dashboard#contact'
-  
+  get 'users/sign_up' => 'dashboard#signup'
   post '/ajax/sum3' => 'pages#ajax_sum3'
    
   #get 'learn' => 'pages#index'

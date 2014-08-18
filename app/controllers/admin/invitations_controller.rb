@@ -29,7 +29,7 @@ class Users::InvitationsController < Devise::InvitationsController
 	  devise_parameter_sanitizer.for(:accept_invitation).concat [:email, :username]
 	  # Override accepted parameters
 	  devise_parameter_sanitizer.for(:accept_invitation) do |u|
-    u.permit(:email, :password, :password_confirmation,:invitation_token)
+    u.permit(:email, :username,:password, :password_confirmation,:invitation_token)
     end
   end
 

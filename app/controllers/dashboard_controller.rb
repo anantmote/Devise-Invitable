@@ -11,5 +11,8 @@ class DashboardController < ApplicationController
   def contact
   	
   end
+
+  def signup
+  end
   
 end

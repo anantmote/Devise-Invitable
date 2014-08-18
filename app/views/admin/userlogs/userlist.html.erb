@@ -1,22 +1,21 @@
-<h1>Page Count</h1>
+<h1>Invitation sent to following users</h1>
 
 <%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
-<br><br>
 
 <table border=0 cellspaceing="5" cellpadding="5">
 	<tr>
 		<td>User Name</td>
-		<td>Page Name</td>
-		<td>Count</td>
+		<td>Email Id</td>
+		<td>Invitation sent on</td>
 	</tr>
 	<% @userlogs.each do |userlog| %>
 		<tr>
-			<td><%= userlog.user.username %></td>
-			<td><%= userlog.page.title %></td>
-			<td><%= userlog.pgcount  %>	
-			
+			<td><%= userlog.username %></td>
+			<td><%= userlog.email  %>	
+			<td><%= userlog.invitation_sent_at.strftime("%d %b, %I:%M%p") %></td>
 		</tr>
 	<% end %>
 </table>
+
  <br><br>
 <%= will_paginate @userlogs %>

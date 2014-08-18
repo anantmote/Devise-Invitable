@@ -26,4 +26,8 @@ class Admin::UserlogsController < ApplicationController
     @userlogs =  Userlog.select("page_id,user_id,count(page_id) as pgcount").group("page_id , user_id").order('user_id').paginate(page: params[:page], per_page: 5)
   end
 
+  def userlist
+    @userlogs =  User.where("role_id != 4").paginate(page: params[:page], per_page: 5)
+  end
+
 end
