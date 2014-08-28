@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     if params[:search]
       @page = Page.search(params[:search]).order("created_at DESC").paginate(page: params[:page], per_page: 5)
     else
-      @page = Page.order("created_at DESC").paginate(page: params[:page], per_page: 5)
+      @page = Page.order("created_at DESC").paginate(page: params[:page], per_page: 2)
     end
 
   end

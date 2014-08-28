@@ -1,0 +1,85 @@
+
+.table-responsive table thead tr th {
+	font-size:18px;
+	color:#000;
+	text-indent:50px;
+}
+.table-responsive table tbody tr td {
+	font-size:18px;
+	color:#000;
+	text-indent:50px;
+}
+.captives-name-icon {
+	background-image:url(/assets//icon.jpg);
+	background-repeat:no-repeat;
+	background-position:20px 12px;
+	width:auto;
+	height:35px;
+	text-indent:35px;
+}
+.form-control {
+	font-size: 16px;
+	height: 42px;
+}
+.navbar-form.navbar-right:last-child {
+	margin-top:14px;
+}
+.navbar-toggle {
+	margin-top: 16px;
+}
+.btn-login {
+	background-color: #31586a;
+	border-color: #1e3741;
+	color: #fff;
+	font-size:24px;
+	font-weight:bold;
+	margin:34px 0px 0px 0px;
+}
+.btn-login:hover, .btn-login:focus {
+	color:#fff;
+	text-decoration:none
+}
+.logo {
+	margin:0px 0px 40px 0px;
+}
+/*.email-icon {
+	background-image:url(../images/email-icon.jpg);
+background-repeat:no-repeat;
+background-position:left top;
+width:61px;
+height:55px;
+}*/
+
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
+    top: 17px;
+}
+
+input[type=checkbox].css-checkbox {
+	display:none;
+}
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:34px;
+	height:22px;
+	display:inline-block;
+	line-height:22px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:16px;
+	vertical-align:middle;
+	cursor:pointer;
+	color:#b7b7b7;
+}
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -22px;
+}
+label.css-label {
+	background-image:url(/assets/checkbox.png);
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+

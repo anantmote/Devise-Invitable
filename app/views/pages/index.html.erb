@@ -1,22 +1,43 @@
-<% if @page.count == 0 %>
-<%= "No record presents" %>
-<% else %>
-<table border=0 cellspaceing="5" cellpadding="5">
+<div class="container">
+  <div class="page-header">
+    <h1>Captives</h1>
+  </div>
+  
+  <div class="table-responsive">
+  <% if @page.count == 0 %>	
+  <%= "No record presents" %>
+  <% else %>
+  <table class="table">
+    <thead>
+      <tr class="active">
+        <th >Name</th>
+        <th>Category</th>
+        <th>Last Updated</th>
+      </tr>
+    </thead>
+    <tbody>
 
-	<tr>
-		<td>Title</td>
-		<td>Category</td>
-		<td>Last Updated</td>
-	</tr>
-	<% @page.each do |page| %>
-		<tr>
-			<td><%= link_to page.title, page  %></td>
-			<td><%= page.categorie.name %></td>
-			<td><%= page.updated_at.strftime("%d %b, %I:%M%p") %></td>
-		</tr>
-	<% end %>
-</table>
-<% end %>	
+    	<% @page.each do |page| %>
+    		<tr>
+		        <td class="captives-name-icon"><%= link_to page.title, page  %></td>
+		        <td><button class="btn btn-info btn-xs" type="button"><%= page.categorie.name %></button></td>
+		        <td><%= page.updated_at.strftime("%d %b, %I:%M%p") %></td>
+		    </tr>
+    	<% end %>
+
+
+      
+    </tbody>
+  </table>
+  <% end %>	
 
 <%= will_paginate @page %>	
+</div>
+</div>
+
+
+
+
+
+
 
