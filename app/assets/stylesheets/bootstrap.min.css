@@ -1079,9 +1079,16 @@ a.bg-danger:hover {
 }
 .page-header {
 	padding-bottom:9px;
-	margin:128px 0 0px;
+	margin:50px 0 0px;
 	/*border-bottom:1px solid #eee*/
 }
+
+.page-header:after, .page-header:before{
+	clear:both;
+	content:"";
+	display:block;
+}
+
 ul, ol {
 	margin-top:0;
 	margin-bottom:10px
@@ -3296,7 +3303,7 @@ border-radius:0
 	float:left;
 	height:50px;
 	padding:15px 15px;
-	font-size:24px;
+	font-size:22px;
 	line-height:40px
 }
 .navbar-brand:hover, .navbar-brand:focus {
@@ -3456,7 +3463,8 @@ margin-right:0;
 margin-left:0;
 border:0;
 -webkit-box-shadow:none;
-box-shadow:none
+box-shadow:none;
+margin-top:14px !important;
 }
 .navbar-form.navbar-right:last-child {
 margin-right:-15px;
@@ -5270,6 +5278,8 @@ display:inline-block!important
 .hidden-xs {
 display:none!important
 }
+
+
 }
 @media (min-width:768px) and (max-width:991px) {
 .hidden-sm {
@@ -5330,5 +5340,11 @@ th.visible-print, td.visible-print {
 @media print {
 .hidden-print {
 	display:none!important
+}
+}
+
+@media only screen and (max-width: 319px) , screen and (max-device-width: 319px) {
+	.navbar-brand {
+    font-size: 16px;
 }
 }

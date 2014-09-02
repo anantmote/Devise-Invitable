@@ -119,4 +119,8 @@ function delete_cookie ( cookie_name )
 <br>
 ---->
 
+<%= link_to "Learn", pages_path, class:"btn btn-success btn-large" %> 
+
+<h1><%= @page.title %> </h1>
+
 <%= @page.content.html_safe %>

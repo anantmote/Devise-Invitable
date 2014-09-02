@@ -1,3 +1,41 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,700);
+.container{}
+.container:after, .container:before{
+	clear:both;
+	content:"";
+	display:block;
+}
+.container p {
+	font-size:18px;
+	color:#4a4a4a;
+	font-family: 'Open Sans', sans-serif;
+	line-height:36px;
+}
+.container p a{
+	font-size:18px;
+	color:#4a4a4a;
+	text-decoration:none;
+}
+
+.container h2{
+	font-size:24px;
+	color:#4a4a4a;
+	font-weight:normal;
+}
+
+.container h3{
+	font-size:24px;
+	color:#4a4a4a;
+	font-weight:normal;
+	text-align:center;
+	padding-bottom:20px;
+}
+
+.navbar-fixed-top:after, .navbar-fixed-top:before {
+	clear:both;
+	display:block;
+	content:"";
+}
 
 .table-responsive table thead tr th {
 	font-size:18px;
@@ -5,12 +43,16 @@
 	text-indent:50px;
 }
 .table-responsive table tbody tr td {
-	font-size:18px;
-	color:#000;
 	text-indent:50px;
 }
+
+.table-responsive table tbody tr td a{
+	font-size:18px;
+	color:#000;
+	text-decoration:none;
+}
 .captives-name-icon {
-	background-image:url(/assets//icon.jpg);
+	background-image:url(/assets/icon.jpg);
 	background-repeat:no-repeat;
 	background-position:20px 12px;
 	width:auto;
@@ -39,17 +81,14 @@
 	color:#fff;
 	text-decoration:none
 }
+.logo:after, .logo:before{
+	clear:both;
+	content:"";
+	display:block;
+}
 .logo {
 	margin:0px 0px 40px 0px;
 }
-/*.email-icon {
-	background-image:url(../images/email-icon.jpg);
-background-repeat:no-repeat;
-background-position:left top;
-width:61px;
-height:55px;
-}*/
-
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"] {
     top: 17px;
 }
@@ -82,4 +121,54 @@ label.css-label {
 	user-select: none;
 }
 
+.contact {
+	float:left;
+}
 
+.container img {
+	float:left;
+	margin-right:52px;
+}
+
+.contact-main {
+	float:left;
+	margin-bottom:20px;
+}
+
+.welcome {
+	padding-right:20px;
+	float:right;
+	font-weight:bold;
+	line-height:68px;
+	color:##5bc0de;
+}
+
+/*.pagination {
+	 margin: 0 auto;
+    text-align: center;
+    width: 24%;
+	display:block;
+}*/
+
+/*.bs-example {
+	width:100%;
+}*/
+
+#error_explanation ul {
+	list-style-type: none;
+	margin : 0px 0px 0px 0px;
+	padding: 0px;
+	width: 100%;
+	
+}
+
+#error_explanation ul li{
+	list-style: none;
+	background-color: #f1ede5;
+	margin : 0px 0px 20px 0px;
+	padding: 10px;
+	text-align: center;
+	border-radius: 5px;
+	color: #9f8974;
+	font-size: 16px;
+}

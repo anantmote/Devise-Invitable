@@ -44,16 +44,21 @@ background-color:white;
 <script>
 
 var url = window.location;
-
+//alert(url);
 // Will only work if string in href matches with location
 $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
 
 // Will also work for relative and absolute hrefs
 $('ul.nav a').filter(function() {
-    if("http://localhost:3000/" == url.href)
+    if("http://10.0.0.101:3000/" == url.href)
     {
       $('[href="/home"]').parent().addClass("active");
     }
+
+     if(url.pathname.indexOf("/pages")==0)
+     {
+      $('[href="/pages"]').parent().addClass("active"); 
+     }
     return this.href == url;
 }).parent().addClass('active');
 
