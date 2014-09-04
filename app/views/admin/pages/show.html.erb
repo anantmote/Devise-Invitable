@@ -1,21 +1,5 @@
-<h1>Show Page</h1> <br><br>
+<%= link_to "Pages", admin_pages_path, class:"btn btn-info back-bttn" %> 
+<h1><%= @page.title %> </h1>
 
-<table border=0 cellspaceing="5">
-	<tr>
-		<td>Title</td><td>:</td><td><%= @page.title %></td>
-	</tr>
-	<tr>	
-		<td>Category</td><td>:</td><td><%= @page.categorie.name %></td>
-	</tr>
-	<tr>	
-		<td valign='top'>Content</td><td valign='top'>:</td><td valign='top'><%= @page.content.html_safe %></td>
-	</tr>
-	<tr>	
-		<td>Last Updated</td><td>:</td><td><%= @page.updated_at %></td>
-	</tr>	
-	
-</table>	
+<%= @page.content.html_safe %>
 
-<br>
-<%= link_to 'Back', admin_pages_path, class: "btn btn-info" %>
-<br>

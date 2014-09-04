@@ -27,7 +27,7 @@ class Users::InvitationsController < Devise::InvitationsController
 
   def configure_permitted_parameters
   	  devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(,:username,:email, :password, :password_confirmation)
+      u.permit(:username,:email, :password, :password_confirmation)
    		 end
 
 	  # Override accepted parameters

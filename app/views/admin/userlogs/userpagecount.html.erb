@@ -1,22 +1,30 @@
-<h1>Page Count</h1>
+<div class="container">
+<div class="page-header">
+<h1 class="category">Page Count</h1>
+<%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info category-bttn" %>
+</div>
 
-<%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
-<br><br>
 
-<table border=0 cellspaceing="5" cellpadding="5">
-	<tr>
-		<td>User Name</td>
-		<td>Page Name</td>
-		<td>Count</td>
-	</tr>
-	<% @userlogs.each do |userlog| %>
-		<tr>
-			<td><%= userlog.user.username %></td>
-			<td><%= userlog.page.title %></td>
-			<td><%= userlog.pgcount  %>	
-			
-		</tr>
-	<% end %>
+
+
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr class="active">
+<th>User Name</th>
+<th>Page Name</th>
+<th>Count</th>
+</tr>
+<% @userlogs.each do |userlog| %>
+
+<tr>
+<td><%= userlog.user.username %></td>
+<td><%= userlog.page.title %></td>
+<td><%= userlog.pgcount  %>	
+</tr>
+<% end %>
+</thead>
 </table>
- <br><br>
+</div>
 <%= will_paginate @userlogs %>
+</div>

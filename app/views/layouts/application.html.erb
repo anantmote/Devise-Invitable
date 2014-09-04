@@ -42,6 +42,48 @@ background-color:white;
 </style>
 <% end %>
 <script>
+/*
+$(document).ready(function() {
+
+    var url_parts = location.href.split('/');
+    alert(url_parts.length);
+   
+
+    if(url_parts.length == 4)
+    {
+      var last_segment = url_parts[url_parts.length-1];
+      alert(last_segment);
+      if(last_segment == "")
+      $('.navbar-nav a[href="/home"]').parents('li').addClass('active');
+      else
+      if(last_segment == "admin")
+      $('.navbar-nav a[href="/admin/categories"]').parents('li').addClass('active');  
+      else
+      $('.navbar-nav a[href="/' + last_segment + '"]').parents('li').addClass('active');
+    }
+    else
+    if(url_parts.length == 5)  
+    {
+      var last_segment = url_parts[url_parts.length-2];
+      if(last_segment == "admin")
+       {
+           var last_segment = url_parts[url_parts.length-1];
+           if(last_segment == "")
+            $('.navbar-nav a[href="/admin/categories"]').parents('li').addClass('active');
+            else
+           $('.navbar-nav a[href="/admin/' + last_segment + '"]').parents('li').addClass('active');
+       } 
+       else
+      //if(last_segment == "pages")
+      $('.navbar-nav a[href="/' + last_segment + '"]').parents('li').addClass('active');
+    }
+    else
+    {
+      var last_segment = url_parts[url_parts.length-1];
+      alert(last_segment);
+    }
+  });
+*/
 
 var url = window.location;
 //alert(url);
@@ -50,18 +92,32 @@ $('ul.nav a[href="'+ url +'"]').parent().addClass('active');
 
 // Will also work for relative and absolute hrefs
 $('ul.nav a').filter(function() {
-    if("http://10.0.0.101:3000/" == url.href)
+    if("http://10.0.0.101:3000/" == url.href || "http://localhost:3000/" == url.href)
     {
       $('[href="/home"]').parent().addClass("active");
     }
+    //alert(url.href);
+    if("http://10.0.0.101:3000/admin/" == url.href || "http://10.0.0.101:3000/admin" == url.href || "http://localhost:3000/admin/" == url.href || "http://localhost:3000/admin" == url.href)
+    {
+      //alert(1);
+      //$('[href="/admin/categories"]')
+      $('[href="/admin/categories"]').parent().addClass("active");
+    }
 
-     if(url.pathname.indexOf("/pages")==0)
-     {
+    if(url.pathname.indexOf("/pages")==0)
+    {
+
       $('[href="/pages"]').parent().addClass("active"); 
-     }
+    }
+    if(url.pathname.indexOf("/admin/pages")==0)
+    {
+     
+      $('[href="/admin/pages"]').parent().addClass("active"); 
+    }
     return this.href == url;
 }).parent().addClass('active');
 
+$(".dropdown").has(".active").addClass("active");
 
 </script>
- 
+

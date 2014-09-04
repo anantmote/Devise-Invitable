@@ -1,17 +1,17 @@
-<h2><%= t 'devise.invitations.edit.header' %></h2>
 
-<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put } do |f| %>
+<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => { :method => :put ,class:"form-signin form-invitation"} do |f| %>
+<h3><%= t 'devise.invitations.edit.header' %></h3>
+
   <%= devise_error_messages! %>
   <%= f.hidden_field :invitation_token %>
 
-   <p><%= f.label :username %><br />
-  <%= f.username_field :username %></p>
-
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
  
-  <p><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></p>
+  <%= f.text_field :username , class: "form-control", :autofocus => true , :placeholder=>"Username" %>
 
-  <p><%= f.submit t("devise.invitations.edit.submit_button") %></p>
+  <%= f.password_field :password , class: "form-control",  :placeholder=>"Password" %>
+   
+  <%= f.password_field :password_confirmation , class: "form-control",  :placeholder=>"Password Confirmation" %>
+
+  <p><%= f.submit t("devise.invitations.edit.submit_button") , class: "btn btn-lg btn-login btn-block" %></p>
 <% end %>
+

@@ -1,0 +1,9 @@
+<% @allcategory.each do |category| %>
+  <tr>
+    <td style="width:80%;"><%= category.name.html_safe %></td>
+    <td><%= link_to "Edit", edit_admin_category_path(category), remote: true, class: "btn btn-warning" %></td>
+    <td><%= link_to "Delete", [:admin, category], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"  %>
+  </tr>
+<% end %>
+
+

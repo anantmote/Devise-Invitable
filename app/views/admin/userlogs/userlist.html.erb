@@ -1,21 +1,30 @@
-<h1>Invitation sent to following users</h1>
+<div class="container">
+<div class="page-header">
+<h1 class="category">Invitation sent to following users</h1>
+<%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info category-bttn" %>
+</div>
 
-<%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
 
-<table border=0 cellspaceing="5" cellpadding="5">
-	<tr>
-		<td>User Name</td>
-		<td>Email Id</td>
-		<td>Invitation sent on</td>
-	</tr>
-	<% @userlogs.each do |userlog| %>
-		<tr>
-			<td><%= userlog.username %></td>
-			<td><%= userlog.email  %>	
-			<td><%= userlog.invitation_sent_at.strftime("%d %b, %I:%M%p") %></td>
-		</tr>
-	<% end %>
+
+<div class="table-responsive">
+<table class="table">
+<thead>
+<tr class="active">
+<th>User Name</th>
+<th>Email Id</th>
+<th>Invitation sent on</th>
+</tr>
+<% @userlogs.each do |userlog| %>
+<tr>
+<td><%= userlog.username %></td>
+<td><%= userlog.email  %>	
+<td><%= userlog.invitation_sent_at.strftime("%d %b, %I:%M%p") %></td>
+</tr>
+<% end %>
+</thead>
 </table>
+</div>
 
- <br><br>
+
 <%= will_paginate @userlogs %>
+</div>

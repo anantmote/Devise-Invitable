@@ -11,7 +11,7 @@ class Admin::PagesController < ApplicationController
  
 
   def index
-  	@page = Page.all.paginate(page: params[:page], per_page:5)
+  	@page = Page.all.paginate(page: params[:page], per_page:2)
   end
 
   def show

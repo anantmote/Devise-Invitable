@@ -1,0 +1,15 @@
+<%= form_for [:admin, @category], remote: true, html: { class: "form-horizontal", style: "display:inline;" } do |c| %>
+  <div class="modal-body">
+    <ul class="errors"></ul>
+   
+  <%= c.text_field :name,class: "form-control", :autofocus => true , :placeholder=>"Category Name" %>
+
+  </div>
+  <div class="modal-footer">
+    <%= c.submit "Save" ,class: "btn btn-primary" %>
+    <%= link_to "Cancel", "#", class: "btn btn-primary", data: {dismiss: "modal"} %>
+  </div>
+<% end %>
+
+
+

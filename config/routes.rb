@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
 
-    get '', to: 'dashboard#index', as: '/'
+    get '', to: 'categories#index', as: '/'
     resources :dashboard
-    resources :categories
+    resources :categories 
     resources :pages
     resources :userlogs do
       collection do

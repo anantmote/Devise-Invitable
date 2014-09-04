@@ -1,29 +1,44 @@
-<h1>Page List</h1> <br>
+<div class="container">
+<div class="page-header">
+<h1 class="category">Page List</h1>
+<%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info category-bttn" %>
+<%= link_to 'Add New page', new_admin_page_path, class: "btn btn-info category-bttn" %>&nbsp;&nbsp;
+</div>
 
-<%= link_to 'Add New page', new_admin_page_path, class: "btn btn-info" %>&nbsp;&nbsp;
-<%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
- <br><br>  
+
+
 <% if @page.count == 0 %>
 <%= "No record presents" %>
 <% else %>
-<table border=0 cellspaceing="5" cellpadding="5">
-	<tr>
-		<td>Title</td>
-		<td>Category</td>
-		<td>Last Updated</td>
-	</tr>
-	<% @page.each do |page| %>
-		<tr>
-			<td><%= link_to page.title , [:admin, page] %></td>
-			<td><%= page.categorie.name %></td>
-			<td><%= page.updated_at.strftime("%d %b, %I:%M%p") %></td>
-			<td><%= link_to "Edit", edit_admin_page_path(page) %></td>
-			<td><%= link_to "delete", [:admin, page], method: :delete, data: { confirm: 'Are you sure?' } %>	
-			
-		</tr>
-	<% end %>
+
+<div class="table-responsive">
+<table class="table">
+<thead>
+
+<tr class="active">
+<th >Title</th>
+<th>Category</th>
+<th>Last Updated</th>
+<th></th>
+<th></th>
+</tr>
+
+<% @page.each do |page| %>
+<tr>
+<td><%= link_to page.title , [:admin, page] %></td>
+<td><%= page.categorie.name.html_safe %></td>
+<td><%= page.updated_at.strftime("%d %b, %I:%M%p") %></td>
+<td><%= link_to "Edit", edit_admin_page_path(page), class: "btn btn-warning" %></td>
+<td><%= link_to "Delete", [:admin, page], method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>	
+</tr>
+<% end %>
+
+</thead>
 </table>
+</div>
+
 <% end %>	
- <br><br>
- <%= will_paginate @page %>	
+<br><br>
+<%= will_paginate @page %>	
+</div>
   

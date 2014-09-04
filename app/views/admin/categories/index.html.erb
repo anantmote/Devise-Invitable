@@ -1,27 +1,39 @@
-<h1>Category List</h1> <br>
+<div class="container">
+<div class="page-header">
+<h1 class="category">Category List</h1>
+<%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info category-bttn" %>
+<%= link_to 'Add New Category', new_admin_category_path, remote: true, class: "btn btn-info category-bttn" %>
+</div>
 
-<%= link_to 'Add New Category', new_admin_category_path, class: "btn btn-info" %>&nbsp;&nbsp;
- <%= link_to 'Dashboard(Home)', admin_path, class: "btn btn-info" %>
- <br><br>  
-<% if @category.count == 0 %>
+<% if @allcategory.count == 0 %>
 <%= "No record presents" %>
 <% else %>
-<table border=0 cellspaceing="5" cellpadding="5">
-	<tr>
-		<td>Name</td>
-		<td></td>
-		<td></td>
-	</tr>
-	<% @category.each do |category| %>
-		<tr>
-			<td><%= link_to category.name , [:admin, category] %></td>
-			<td><%= link_to "Edit", edit_admin_category_path(category) %></td>
-			<td><%= link_to "delete", [:admin, category], method: :delete, data: { confirm: 'Are you sure?' } %>	
-			
-		</tr>
-	<% end %>
-</table>
+
+<div class="table-responsive">
+<table class="table">
+  <thead>
+    <tr class="active">
+    <th >Name</th>
+    <th></th>
+    <th></th>
+    </tr>
+    <tbody class="product-index">
+      <%= render "index" %>
+    </tbody>
+  </thead>  
+  </table>
+</div>
+	
 <% end %>	
  <br><br>
- <%= will_paginate @category %>	
-  
+ <%= will_paginate @allcategory %>	
+ </div>
+ 
+ 
+ 
+
+<div id="product-modal" class="modal fade">
+<div class="modal-dialog">
+    <div id="inner-product-modal" class="modal-content"></div>
+</div>
+</div>

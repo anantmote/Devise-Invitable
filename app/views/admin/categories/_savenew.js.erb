@@ -1,0 +1,12 @@
+
+$("ul.errors").html("")
+<% if @category.errors.any? %>
+  <% @category.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"))
+  <% end %>
+<% else %>
+  $(".product-index").html("<%= escape_javascript(render 'index') %>")
+  //window.location.reload();
+  $("#product-modal").modal("hide")
+<% end %>
+

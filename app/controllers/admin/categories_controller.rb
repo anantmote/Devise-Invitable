@@ -1,5 +1,5 @@
 class Admin::CategoriesController < ApplicationController
-
+  respond_to :html, :js
   before_filter :authenticate_user!,:is_admin?
   
   def is_admin?
@@ -10,7 +10,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def index
-  	@category = Categorie.all.paginate(page: params[:page], per_page: 5)
+  	@allcategory = Categorie.all.paginate(page: params[:page], per_page: 2)
+    #@allcategory = Categorie.paginate(:all, :order => "name ASC", :per_page => 2, :page => params[:page])
   end
 
   def show
@@ -18,31 +19,23 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def new
-  	@category = Categorie.new
+    @category = Categorie.new
   end
   
   def create
-    @category = Categorie.new(cat_params)    
-    if @category.save
-      flash[:success] = "Category is added successfully!"
-      redirect_to [:admin, @category]
-    else
-      render 'new'
-    end
+    @allcategory = Categorie.all.paginate(page: params[:page], per_page: 2)
+    @category = Categorie.create(cat_params)
   end
 
   def edit
     @category = Categorie.find(params[:id])
   end
 
+
   def update
+    @allcategory = Categorie.all.paginate(page: params[:page], per_page: 2)
     @category = Categorie.find(params[:id])
-    if @category.update_attributes(cat_params)
-      flash[:success] = "Category is updated successfully!"
-      redirect_to [:admin_category]
-    else
-      render 'edit'
-    end
+    @category.update_attributes(cat_params)
   end
 
   def destroy
@@ -50,6 +43,8 @@ class Admin::CategoriesController < ApplicationController
     flash[:success] = "Category deleted successfully"
     redirect_to [:admin_categories]
   end
+
+ 
 
   private
     def cat_params
