@@ -26,7 +26,8 @@
 	
 <% end %>	
  <br><br>
- <%= will_paginate @allcategory %>	
+ <%# = will_paginate @allcategory %>	
+ <%= will_paginate @allcategory, renderer: BootstrapPagination::Rails %>
  </div>
  
  

@@ -22,9 +22,9 @@
 		
 		<tr>
 		     <td> <%= c.label :content %></td>
-		     <td> <%= c.text_area :content, class: "tinymce" %></td>
+		     <td> <%= c.cktext_area :content, rows: 10 %></td>
 		</tr>
-
+		
 	    <tr>
 	     	<td colspan="2"> 
 			<%= link_to 'Cancel', admin_pages_path, class: "btn btn-info category-bttn" %>
@@ -36,5 +36,5 @@
 
 <% end %>
 
-<%= tinymce %>
+<%#= tinymce %>
 </div>

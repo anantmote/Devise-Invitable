@@ -41,8 +41,9 @@ gem 'spring',        group: :development
 gem 'devise'
 gem 'devise_invitable'
 gem 'tinymce-rails'	
-gem 'will_paginate'
-
+gem "ckeditor"
+#gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 group :development, :test do 
  gem 'sqlite3'
 end

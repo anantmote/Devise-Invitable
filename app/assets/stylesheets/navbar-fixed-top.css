@@ -188,6 +188,19 @@ label.css-label {
 .edit_page table, .new_page table{
 	width:100%;
 }
+
+.edit_page table, .new_page table tbody tr td label{
+	line-height: 18px;
+	text-align: right;
+}
+
+.edit_page table, .new_page table tbody tr td{
+	vertical-align:top;
+	line-height:35px;
+	text-align: right;
+	padding:0px 20px 0px 0px;
+}
+
 #page_categorie_id, #page_title {
 	background-color: #fff;
     background-image: none;
